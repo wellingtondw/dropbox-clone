@@ -394,7 +394,7 @@ html.scooter-css,
   vertical-align: top;
 }
 .o-grid--nowhitespace .o-grid__col,
-[data-reactid] .o-grid__col {
+[data-id] .o-grid__col {
   margin-right: 0;
 }
 @media (max-width: 750px) {
