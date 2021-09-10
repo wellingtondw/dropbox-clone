@@ -28,7 +28,16 @@ export default class UploadFiles {
           formData.append('file', file)
 
           try {
-            const response = await api.post('/uploads', formData)
+            const response = await api.post('/upload', formData, {
+              onUploadProgress: (event) => {
+                let progress = Math.round(
+                  (event.loaded * 100) / event.total
+                );
+
+                console.log(progress)              
+              }
+            })
+
             resolve(response)
           } catch(err) {
             reject(err)
