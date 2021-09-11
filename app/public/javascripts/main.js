@@ -1,3 +1,3 @@
-import UploadFiles from './upload-files.js'
+import uploadFilesController from './uploadFilesController.js'
 
-new UploadFiles()
+new uploadFilesController()

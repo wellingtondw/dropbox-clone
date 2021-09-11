@@ -2,7 +2,7 @@ import api from '../services/api/config.js'
 
 import { formatTimeToShowInScreen } from '../utils/date.js'
 
-export default class UploadFiles {
+export default class uploadFilesController {
     constructor() {
       this.btnSendFileEl = document.querySelector('#btn-send-file')
       this.inputFilesEl = document.querySelector('#files')
@@ -10,7 +10,6 @@ export default class UploadFiles {
       this.progressBarEl = this.snackModalEl.querySelector('.mc-progress-bar-fg')
       this.filenameEl = this.snackModalEl.querySelector('.filename')
       this.timeLeftEl = this.snackModalEl.querySelector('.timeleft')
-
 
       this.initEvents()
     }
