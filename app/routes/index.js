@@ -1,4 +1,4 @@
-var router = require('express').Router()
+const router = require('express').Router()
 
 const viewsRouter = require('./views.routes')
 const uploadRouter = require('./upload.routes')

@@ -5,7 +5,9 @@ const uploadConfig = require('../config/upload')
 const upload = multer(uploadConfig)
 
 router.post('/upload', upload.single('file') ,(req, res) => {
-  const file = req.file
+  const { filename, originalname, mimetype, destination } = req.file
+
+  const file = { filename, originalname, mimetype, destination }
 
   res.json({ file })
 })

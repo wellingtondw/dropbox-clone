@@ -19,10 +19,17 @@ export default class uploadFilesController {
         this.inputFilesEl.click();
       })
 
-      this.inputFilesEl.addEventListener('change', (event) => {
-        this.uploadFilesPromises(event.target.files)
-
+      this.inputFilesEl.addEventListener('change', async (event) => {
+        
+        this.btnSendFileEl.disabled = true
         this.showProgressModal()
+        
+        try {
+          await this.uploadFilesPromises(event.target.files)          
+          this.uploadComplete()
+        } catch (err){
+          this.uploadComplete()
+        }
       })
     }
 
@@ -42,13 +49,8 @@ export default class uploadFilesController {
               },
             })
 
-            this.resetProgressModal()
-            this.showProgressModal(false)
-
             resolve(response)
           } catch(err) {
-            this.resetProgressModal()
-            this.showProgressModal(false)
             reject(err.response)
           }
         }
@@ -77,11 +79,13 @@ export default class uploadFilesController {
       this.timeLeftEl.innerHTML = formatTimeToShowInScreen(timeLeft)
     }
 
-    resetProgressModal() {
+    uploadComplete() {
       this.inputFilesEl.value = ''
       this.progressBarEl.style.width = '0%'
       
       this.filenameEl.innerHTML = ''
       this.timeLeftEl.innerHTML = ''
+      this.showProgressModal(false)
+      this.btnSendFileEl.disabled = false
     }
 }
