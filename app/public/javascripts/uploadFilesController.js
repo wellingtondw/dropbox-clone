@@ -28,7 +28,7 @@ export default class uploadFilesController {
 
     uploadFilesPromises(files) {
       const promises = [...files].map((file) => new Promise(
-        async (reject, resolve) => {
+        async (resolve, reject) => {
           const formData = new FormData()
           formData.append('file', file)
 
@@ -49,7 +49,7 @@ export default class uploadFilesController {
           } catch(err) {
             this.resetProgressModal()
             this.showProgressModal(false)
-            reject(err)
+            reject(err.response)
           }
         }
       ))
