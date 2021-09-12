@@ -1,15 +1,11 @@
 const router = require('express').Router()
 const multer = require('multer')
 const uploadConfig = require('../config/upload')
+const UploadController = require('../controllers/UploadController')
 
 const upload = multer(uploadConfig)
+const uploadController = new UploadController()
 
-router.post('/upload', upload.single('file') ,(req, res) => {
-  const { filename, originalname, mimetype, destination } = req.file
-
-  const file = { filename, originalname, mimetype, destination }
-
-  res.json({ file })
-})
+router.post('/upload', upload.single('file'), uploadController.uploadFile)
 
 module.exports = router
