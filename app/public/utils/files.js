@@ -66,6 +66,7 @@ export function getFileIconByType(type) {
         </svg>
       `
     case 'video/webm':
+    case 'video/mp4':
     case 'video/3gpp':
     case 'video/ogg':
     case 'video/mpeg':

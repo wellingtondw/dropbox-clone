@@ -1,15 +1,15 @@
 import api from '../services/api/config.js'
-
 import { formatTimeToShowInScreen } from '../utils/date.js'
 
 export default class uploadFilesController {
-    constructor() {
+    constructor({ listFilesController }) {
       this.btnSendFileEl = document.querySelector('#btn-send-file')
       this.inputFilesEl = document.querySelector('#files')
       this.snackModalEl = document.querySelector('#snackbar-root')
       this.progressBarEl = this.snackModalEl.querySelector('.mc-progress-bar-fg')
       this.filenameEl = this.snackModalEl.querySelector('.filename')
       this.timeLeftEl = this.snackModalEl.querySelector('.timeleft')
+      this.listFilesController = listFilesController
 
       this.initEvents()
     }
@@ -87,5 +87,7 @@ export default class uploadFilesController {
       this.timeLeftEl.innerHTML = ''
       this.showProgressModal(false)
       this.btnSendFileEl.disabled = false
-    }
+
+      this.listFilesController.getFiles()
+    } 
 }

@@ -12203,3 +12203,10 @@ a.maestro-nav__feature {
   background-color: #d6e8fa;
   border-radius: 2px;
 }
+
+#list-of-files-and-directories li > div {
+  max-width: 175px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

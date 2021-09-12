@@ -1,8 +1,14 @@
 const { io } = require('../config/http')
 
+const ListAllFilesService = require('../services/ListAllFilesService')
+
 io.on('connect', socket => {
 
-  socket.emit('list_files', {
-    message: 'Listando arquivos'
+  socket.on('list_files', async callback => {
+    const listAllFilesService = new ListAllFilesService()
+
+    const files = await listAllFilesService.execute()
+
+    callback(files)
   })
 })

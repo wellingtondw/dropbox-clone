@@ -1,5 +1,6 @@
-import uploadFilesController from './uploadFilesController.js'
-import listFilesController from './listFilesController.js'
+import UploadFilesController from './uploadFilesController.js'
+import ListFilesController from './listFilesController.js'
 
-new uploadFilesController()
-new listFilesController()
+const listFilesController = new ListFilesController()
+new UploadFilesController({ listFilesController })
+
