@@ -1,5 +1,5 @@
-import api from '../services/api/config.js'
-import { formatTimeToShowInScreen } from '../utils/date.js'
+import api from '../../services/api/config.js'
+import { formatTimeToShowInScreen } from '../../utils/date.js'
 
 export default class uploadFilesController {
     constructor({ listFilesController }) {

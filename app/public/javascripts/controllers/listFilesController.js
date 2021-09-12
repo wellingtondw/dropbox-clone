@@ -1,4 +1,4 @@
-import { getFileIconByType } from '../utils/files.js'
+import { getFileIconByType } from '../../utils/files.js'
 
 export default class ListFilesController {
   constructor({ filesAndDirectoriesController }) {
