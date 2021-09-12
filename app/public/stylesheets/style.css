@@ -12204,6 +12204,19 @@ a.maestro-nav__feature {
   border-radius: 2px;
 }
 
+#list-of-files-and-directories {
+  display: flex;
+}
+
+#list-of-files-and-directories li {
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
 #list-of-files-and-directories li > div {
   max-width: 175px;
   overflow: hidden;

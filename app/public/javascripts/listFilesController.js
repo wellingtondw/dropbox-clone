@@ -1,10 +1,11 @@
 import { getFileIconByType } from '../utils/files.js'
 
 export default class ListFilesController {
-  constructor() {
+  constructor({ filesAndDirectoriesController }) {
     this.socket = io()
 
     this.listFilesEl = document.querySelector('#list-of-files-and-directories')
+    this.filesAndDirectoriesController = filesAndDirectoriesController
 
     this.getFiles()
   }
@@ -12,6 +13,12 @@ export default class ListFilesController {
   renderListFiles(file) {
     const li = document.createElement('li')
     li.dataset.key = file._id 
+    li.className = 'files-and-directories-list-item'
+
+    li.addEventListener('click', (event) => {
+      this.filesAndDirectoriesController
+        .handleClickFilesAndDirectoriesListItem(event, li)
+    })
 
     li.innerHTML = `
       ${getFileIconByType(file.mimetype)}
