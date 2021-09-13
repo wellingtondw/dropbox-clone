@@ -12216,3 +12216,15 @@ a.maestro-nav__feature {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+#btn-new-folder,
+#btn-rename,
+#btn-delete {
+  height: 40;
+  margin-top: 8px;
+}
+
+#btn-rename,
+#btn-delete {
+  display: none;
+}

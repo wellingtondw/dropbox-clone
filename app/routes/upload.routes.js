@@ -6,6 +6,8 @@ const UploadController = require('../controllers/UploadController')
 const upload = multer(uploadConfig)
 const uploadController = new UploadController()
 
-router.post('/upload', upload.single('file'), uploadController.uploadFile)
+router.post('/upload', upload.single('file'), (req, res, next) => {
+  uploadController.uploadFile(req, res, next)
+})
 
 module.exports = router

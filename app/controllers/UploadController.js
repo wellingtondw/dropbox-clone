@@ -1,7 +1,6 @@
 const UploadFileService = require('../services/UploadFileService')
 
 class UploadController {
-
   async uploadFile(req, res, next) {
     try {
       const { filename, originalname, mimetype, destination } = req.file
