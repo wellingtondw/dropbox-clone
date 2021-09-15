@@ -1,4 +1,5 @@
 const UploadFileService = require('../services/UploadFileService')
+const fs = require('fs/promises')
 
 class UploadController {
   async uploadFile(req, res, next) {
@@ -10,7 +11,15 @@ class UploadController {
 
       res.json({ file })
     } catch(error) {
-      next(error)
+      const { filename, destination } = req.file
+
+      next({ file: req.file })
+
+      await fs.unlink(`${destination}/${filename}`, ((err) => {
+        if(err) {
+          console.log(`error deleting file: ${destination}/${filename}`)
+        }
+      }))      
     } 
   }
 
