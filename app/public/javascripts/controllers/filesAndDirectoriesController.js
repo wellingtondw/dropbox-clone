@@ -14,6 +14,10 @@ export default class FilesAndDirectoriesController {
     this.btnRenameEl.addEventListener('click', () => {
       this.updateFileName()
     })
+
+    this.btnDeleteEl.addEventListener('click', () => {
+      this.removeFile()
+    })
   }
 
   getSelectedFiles() {
@@ -37,6 +41,7 @@ export default class FilesAndDirectoriesController {
         this.btnDeleteEl.style.display = 'block'
     }
   }
+  
 
   async updateFileName() {
     try {
@@ -48,6 +53,28 @@ export default class FilesAndDirectoriesController {
       await api.put('/files/rename', {
         _id,
         originalname: result
+      })
+
+      socket.emit('list_files')
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
+  async removeFile() {
+    try {
+      const selectedFile = this.getSelectedFiles()[0]
+      const { _id, destination, filename } = JSON.parse(selectedFile.dataset.values)
+
+      const agree = confirm('Deseja realmente excluir?')
+
+      if(!agree) return
+
+      await api.delete(`/files/${_id}`, {
+        data: {
+          destination,
+          filename
+        }
       })
 
       socket.emit('list_files')

@@ -19,9 +19,12 @@ export default class ListFilesController {
 
   renderListFiles(file) {
     const li = document.createElement('li')
+    const { _id, originalname, destination, filename } = file 
     li.dataset.values = JSON.stringify({
-      _id: file._id,
-      originalname: file.originalname
+      _id, 
+      originalname, 
+      destination, 
+      filename
     })
 
     li.addEventListener('click', (event) => {
