@@ -28,17 +28,13 @@ export default class FilesAndDirectoriesController {
 
   handleRenderActionsMenu() {
     switch(this.getSelectedFiles().length) {
-      case 0:
-        this.btnRenameEl.style.display = 'none'
-        this.btnDeleteEl.style.display = 'none'
-        break
       case 1:
         this.btnRenameEl.style.display = 'block'
         this.btnDeleteEl.style.display = 'block'
         break
       default:
         this.btnRenameEl.style.display = 'none'
-        this.btnDeleteEl.style.display = 'block'
+        this.btnDeleteEl.style.display = 'none'
     }
   }
   

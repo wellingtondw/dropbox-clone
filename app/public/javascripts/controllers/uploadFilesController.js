@@ -81,6 +81,7 @@ export default class uploadFilesController {
             })
 
             this.removeProgressItem(index)
+            socket.emit('list_files')
 
             resolve(response)
           } catch(err) {
